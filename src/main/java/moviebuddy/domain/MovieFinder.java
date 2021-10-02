@@ -4,13 +4,20 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Service;
+
+@Service
 public class MovieFinder {
 	
 //	private MovieReader movieReader = new CsvMovieReader();
 
 	private final MovieReader movieReader;
 	
-	public MovieFinder(MovieReader movieReader) {
+//	@Autowired
+	public MovieFinder(@Qualifier("csvMovieReader") MovieReader movieReader) {
 		this.movieReader = Objects.requireNonNull(movieReader);
 	}
 

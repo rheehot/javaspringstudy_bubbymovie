@@ -13,10 +13,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 
+import org.springframework.stereotype.Repository;
+
 //import JaxbMovieReader.MovieData;
 //import JaxbMovieReader.MovieMetadata;
 import moviebuddy.ApplicationException;
-
+@Repository
 public class JaxbMovieReader implements MovieReader{
 	
 	@Override
