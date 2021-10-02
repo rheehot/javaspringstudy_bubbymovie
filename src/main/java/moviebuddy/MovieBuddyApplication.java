@@ -13,6 +13,9 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import moviebuddy.domain.CsvMovieReader;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieFinder;
@@ -35,11 +38,14 @@ public class MovieBuddyApplication {
 	 */	
 	
 	void run(String[] args) throws Exception {
+
+		final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MovieBuddyFactory.class);
+//		final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory();
 		
-		final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory();
-		
+		final MovieFinder movieFinder = applicationContext.getBean(MovieFinder.class);
 //		final MovieFinder movieFinder = new MovieFinder(new CsvMovieReader());
-		final MovieFinder movieFinder = movieBuddyFactory.movieFinder();
+//		final MovieFinder movieFinder = movieBuddyFactory.movieFinder();
+
 		
 		final AtomicBoolean running = new AtomicBoolean(true);
 		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
