@@ -10,11 +10,11 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import moviebuddy.MovieBuddyFactory;
 import moviebuddy.MovieBuddyProfile;
-import moviebuddy.data.JaxbMovieReader;
+import moviebuddy.data.XmlbMovieReader;
 import moviebuddy.domain.Movie;
 @ActiveProfiles(MovieBuddyProfile.XML_MODE)
 @SpringJUnitConfig(MovieBuddyFactory.class)
-public class JaxbMovieReaderTest {
+public class XmlMovieReaderTest {
 	
 //	public static void main(String[] args) {
 //		JaxbMovieReader movieReader = new JaxbMovieReader();
@@ -23,7 +23,7 @@ public class JaxbMovieReaderTest {
 //		MovieFinderTest.assertEquals(1375, movies.size());
 //	}
 	
-	@Autowired JaxbMovieReader movieReader;
+	@Autowired XmlbMovieReader movieReader;
 
 	@Test
 	void NotEmpty_LoadedMovies() {
