@@ -12,9 +12,12 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.slf4j.LoggerFactory;
 
 import moviebuddy.ApplicationException;
 import moviebuddy.MovieBuddyProfile;
@@ -24,7 +27,7 @@ import moviebuddy.util.FileSystemUtils;
 //@Component
 @Profile(MovieBuddyProfile.CSV_MODE)
 @Repository
-public class CsvMovieReader implements MovieReader {
+public class CsvMovieReader extends AbstractFileSystemMovieReader implements MovieReader {
 
 	/**
 	 * 영화 메타데이터를 읽어 저장된 영화 목록을 불러온다.

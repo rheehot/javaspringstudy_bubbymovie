@@ -25,11 +25,11 @@ import moviebuddy.domain.MovieReader;
 
 @Profile(MovieBuddyProfile.XML_MODE)
 @Repository
-public class XmlbMovieReader implements MovieReader{
+public class XmlMovieReader  extends AbstractFileSystemMovieReader implements MovieReader{
 	
 	private final Unmarshaller unmarshaller;
 	
-	public XmlbMovieReader(Unmarshaller unmarshaller) {
+	public XmlMovieReader(Unmarshaller unmarshaller) {
 		this.unmarshaller = unmarshaller;
 	}
 	
@@ -40,7 +40,7 @@ public class XmlbMovieReader implements MovieReader{
 //			final JAXBContext jaxb = JAXBContext.newInstance(MovieMetadata.class);
 //	        final Unmarshaller unmarshaller = jaxb.createUnmarshaller();
 
-	        final InputStream content = ClassLoader.getSystemResourceAsStream("movie_metadata.xml");
+	        final InputStream content = ClassLoader.getSystemResourceAsStream(getMetadata());
 	        final Source source = new StreamSource(content);
 	        final MovieMetadata metadata = (MovieMetadata) unmarshaller.unmarshal(source);
 
